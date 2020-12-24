@@ -1,14 +1,13 @@
-function Sentiment(fullTextData, polarityData, subjectivityData){ 
+function Restaurant(fullTextData, fullData){ 
     this.fullTextData = fullTextData; 
-    this.polarityData = polarityData;
-    this.subjectivityData = subjectivityData
+    this.fullData = fullData;
     this.init(); 
 }
 
-Sentiment.prototype.init = function(){
+Restaurant.prototype.init = function(){
+  var self = this;
 
-
-    var self = this;
+  keys = ["restaurant", "food", "table", "public", "home", "meal", "dinner", "lunch", "breakfast", "cafe", "eating", "eat", "kitchen", "dining"]
 
   var colors = d3.scaleOrdinal()
                  .domain([0,1])
@@ -43,12 +42,12 @@ Sentiment.prototype.init = function(){
         .attr("class", "tooltip-donut")
         .style("opacity", 0);
 
-    const svg = d3.select("#sentiment").append("svg")
+    const svg = d3.select("#restaurant").append("svg")
         .attr("width", 1500)
         .attr("height", 300)
         .attr("class", "cluster");
     svg.selectAll("rect")
-        .data(this.fullTextData, function(d){
+        .data(this.fullData, function(d){
             return d; 
         })
         .enter()
@@ -62,7 +61,15 @@ Sentiment.prototype.init = function(){
             return Math.floor(i/100)%100*13;
         })
         .attr("fill", function(d,i){
-            return colors(self.subjectivityData[i].Value); 
+            var phrase = (self.fullTextData[i].Text)
+            let arr = phrase.split(' ')
+            for(var i = 0; i < keys.length; i++){
+                if(arr.includes(keys[i])){
+                    return colors(self.fullData[i].Value); 
+                }
+            }
+            return("fill", "#d3d3d3")
+            // return colors(self.fullData[i].Value); 
         }) 
         .on('mouseover', function (d, i) {
           var x = (event.pageX) + "px"

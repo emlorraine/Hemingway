@@ -1,0 +1,16 @@
+html{
+    background-color: #f4f1de;
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h2{
+    margin-left: 50px;
+    color: #3d405b;
+}
+
+svg{
+    margin-left: 50px;
+}
+

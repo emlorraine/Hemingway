@@ -1,15 +1,12 @@
-function Sentiment(fullTextData, polarityData, subjectivityData){ 
+function Polarity(fullTextData, polarityData, subjectivityData){ 
     this.fullTextData = fullTextData; 
     this.polarityData = polarityData;
     this.subjectivityData = subjectivityData
     this.init(); 
 }
 
-Sentiment.prototype.init = function(){
-
-
-    var self = this;
-
+Polarity.prototype.init = function(){
+  var self = this;
   var colors = d3.scaleOrdinal()
                  .domain([0,1])
                  .range([
@@ -43,7 +40,7 @@ Sentiment.prototype.init = function(){
         .attr("class", "tooltip-donut")
         .style("opacity", 0);
 
-    const svg = d3.select("#sentiment").append("svg")
+    const svg = d3.select("#polarity").append("svg")
         .attr("width", 1500)
         .attr("height", 300)
         .attr("class", "cluster");
@@ -62,7 +59,7 @@ Sentiment.prototype.init = function(){
             return Math.floor(i/100)%100*13;
         })
         .attr("fill", function(d,i){
-            return colors(self.subjectivityData[i].Value); 
+            return colors(self.polarityData[i].Value); 
         }) 
         .on('mouseover', function (d, i) {
           var x = (event.pageX) + "px"
