@@ -1,4 +1,5 @@
 (function(){
+    
     var instance = null;
     function init() {
     Promise.all([

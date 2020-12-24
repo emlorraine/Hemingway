@@ -69,7 +69,6 @@ Restaurant.prototype.init = function(){
                 }
             }
             return("fill", "#d3d3d3")
-            // return colors(self.fullData[i].Value); 
         }) 
         .on('mouseover', function (d, i) {
           var x = (event.pageX) + "px"

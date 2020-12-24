@@ -35,14 +35,16 @@ Full.prototype.init = function(){
                  "#06454c",
                  "#044147"])
 
-    var div = d3.select("body").append("div")
-        .attr("class", "tooltip-donut")
-        .style("opacity", 0);
+    // var tip = d3.tip()
+    //     .attr('class', 'd3-tip')
+    //     .html(function(d) { return d; })
 
     const svg = d3.select("#full").append("svg")
         .attr("width", 1500)
         .attr("height", 300)
-        .attr("class", "cluster");
+        .attr("class", "cluster")
+        // .call(tip);
+
     svg.selectAll("rect")
         .data(this.fullData, function(d){
             return d; 
@@ -61,21 +63,21 @@ Full.prototype.init = function(){
             return colors(self.fullData[i].Value); 
         }) 
         .on('mouseover', function (d, i) {
-          var x = (event.pageX) + "px"
-          var y = (event.pageY) + "px"
-          console.log(x)
-          console.log(y)
+        //   tip.show
           d3.select(this).transition()
                .attr('stroke', 'black')
                 div.transition()
                 .style("opacity", 1)
         })
         .on('mouseout', function (d, i) {
+        //   tip.hide
           d3.select(this).transition()
                .attr('stroke', 'none')
                 div.transition()
                     .style("opacity", 1);
         })
+
+
 
 
 }
