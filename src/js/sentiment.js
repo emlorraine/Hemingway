@@ -53,14 +53,20 @@ Sentiment.prototype.init = function(){
         .attr("width", 10)
         .attr("height", 10)
         .attr("x", function(d,i){
-            return (i%100)*12; 
+            return (i%100)*13; 
         })
         .attr("y", function(d,i){
-            return Math.floor(i/100)%100*12;
+            return Math.floor(i/100)%100*13;
         })
         .attr("fill", function(d,i){
-            console.log(self.subjectivityData[i].Value)
             return colors(self.subjectivityData[i].Value); 
         }) 
+        .on('mouseover', function (d, i) {
+          d3.select(this).transition()
+               .attr('stroke', 'black')})
+        .on('mouseout', function (d, i) {
+          d3.select(this).transition()
+               .attr('stroke', 'none')})
+
 }
 
