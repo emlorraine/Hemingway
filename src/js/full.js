@@ -6,6 +6,7 @@ function Full(fullTextData, fullData){
 
 Full.prototype.init = function(){
   var self = this;
+  const data = [self.fullTextData, self.fullData]; 
   var colors = d3.scaleOrdinal()
                  .domain([0,1])
                  .range([
@@ -42,7 +43,7 @@ Full.prototype.init = function(){
         .attr("class", "cluster")
     
     svg.selectAll("rect")
-        .data(this.fullData, function(d,i){
+        .data(data[0], function(d,i){
             // var index = self.fullTextData.indexOf(self.fullTextData[i])
             // console.log(index)
             return d; 
@@ -62,28 +63,22 @@ Full.prototype.init = function(){
             return colors(self.fullData[i].Value); 
         })       
         .on('mouseover', function (d,i) {
-            console.log(d)
-            var text = self.fullTextData[i];
-            console.log(text)
-            var index = self.fullTextData.indexOf(self.fullTextData[i])
-            console.log(index)
-            // var x = (event.pageX) + "px"
-            // var y = ((event.pageY)-28) + "px"
-            d3.select(this).transition()
+            const textDataValues = data[1].map(item => item.Value)
+            const textData = data[0].map(item => item.Text)
+            var index = (textData.indexOf(i.Text))
+            d3.select(this)
+                .transition()
+                .duration(100)
                 .attr('stroke', 'black')
             svg.append("text")
                 .text(function(d, i){
-                    // var text = self.fullTextData[i];
-                    // console.log(text)
-                    // var index = self.fullTextData.indexOf(self.fullTextData[i])
-                    // console.log(index)
-                    return("Text: " + self.fullTextData[i].Text);
+                    return("Text: " + textData[index]);
                 })
                 .attr("x", 0)
                 .attr("y", 315);
             svg.append("text")
                 .text(function(d, i){
-                    return("Sentiment value: " + self.fullTextData[i].Value)
+                    return("Sentiment value: " + textDataValues[index])
                 })
                 .attr("x", 0)
                 .attr("y", 350);
