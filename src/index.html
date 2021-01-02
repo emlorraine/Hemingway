@@ -6,15 +6,36 @@
     <title>Ernest Hemingway’s “A Moveable Feast"</title>
     <script src="js/d3/d3.min.js"></script>
     <!-- <script src="http://d3js.org/d3.v3.min.js"></script> -->
-    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <!-- <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script> -->
 
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
+    <!-- <link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css"> -->
     <link rel="stylesheet" href="css/style.css"/>
 </head>
 
 <body>
+    <h1>Hunger in Public: The Language of Eating and the Public as Communion in Ernest Hemingway's "A Moveable Feast"</h1>
     <h2>The Big Picture:</h2>
+    <p> When reflecting on his early years in writing after attempts in stateside journalism, Ernest Hemingway’s, “A Moveable Feast” paints an earnest portrait of Hemingway trying to establish himself as a writer in France. As Hemingway writes on his time, his interest in food and hunger is attached to desire outside of food, most commonly a desire for a kind of literary fulfillment in his writing. The anecdotes Hemingway writes are bound by the title meaning of the phrase, “A moveable feast.” While Hemingway writes about oscillating between creative hunger and satiation, his narrative is framed by the physical sensation of hunger and satiation. For Hemingway, these frames are most present in public eating spaces like restaurants and cafes. 
+    </p>
+    <p>
+        With Paris as the backdrop for his memories, those cafes and restaurants serve as public monuments of communion. The idea of a public space reserved for a kind of communion motivates the creative meaning behind Hemingway’s hunger while acknowledging the very real questions of material stability in pre-war Paris. In this binary, the act of sharing food as an allegory of religious communion presents an interesting tension when Hemingway writes about the physicality of restaurants and dining as public spaces.  
+    </p>
+    <p>
+        For Hemingway, if the act of eating is a religious allegory for religious worship, such worship would take place in the cafes and restaurants that peppered the pre-war Parisian social scene. There is a linguistic texture to this tension that guides how Hemingway approaches the act of eating as an iteration of communion. In deconstructing “A Moveable Feast” to its constituent themes, there is a compelling degree of neutrality that orders how Hemingway writes about the architecture of and around eating. In this project, I intend to visualize the range of Hemingway’s sentiments across the entirety of the text in order to illustrate the consistency of how he writes about food and the engagement of eating in public spaces. In doing so, I hope to connect how Hemingway treats these restaurants and cafes as a cultural allegory for religious spaces to understand how Hemingway writes his creative work as an analogy to religious work. 
+
+    </p>
+    <h3>Methodology</h3>
+    <p>Natural-language processing is a field that employs tools from software development and linguistics to provide macro-level analysis of language and the constituent structures of language. For this project, I took a text file of Hemingway’s “A Moveable Feast” and mined the text for words that fulfilled a set of categories relating to food, restaurants, and the act of eating. To process this data, I opted to use two measures of meaning: sentiment and polarity.  
+    </p>
+    <p>
+        Sentiment analysis breaks down sentences and evaluates each statement’s relative positivity as informed by a corpus of words associated with scores. A score closer to zero indicates a less subjective expression whereas a score closer to one indicates a more subjective expression. Polarity analysis determines the subjectivity of a sentence by way of its structure and further sentiment analysis of sentences. A score closer to -1 indicates a less negative expression whereas a score closer to 1 indicates a more positive expression.
+    </p>
+
+    <p>
+        To isolate keywords associated with public spaces and eating, I identified a set of words and searched over the corpus of statements. If a statement contained one of the set words or carried a similar meaning, I extracted that sentence from the memoir and performed further analysis to measure their similarity. 
+    </p>
+    <h4>Fig. 1.</h4>
     <div id="full"></div>
 
     <h2>Sentiment Analysis:</h2>
@@ -26,8 +47,8 @@
     <h2>The restaurants as a public space:</h2>
     <div id="restaurant"></div>
 
-    <h2>Text Analysis:</h2>
-
+    <h2>Sources:</h2>
+    <!-- <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script> -->
     <script type="application/javascript" src="js/full.js"></script>
     <script type="application/javascript" src="js/restaurant.js"></script>
     <script type="application/javascript" src="js/sentiment.js"></script>

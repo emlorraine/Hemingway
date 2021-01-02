@@ -35,18 +35,16 @@ Full.prototype.init = function(){
                  "#06454c",
                  "#044147"])
 
-    // var tip = d3.tip()
-    //     .attr('class', 'd3-tip')
-    //     .html(function(d) { return d; })
 
     const svg = d3.select("#full").append("svg")
-        .attr("width", 1500)
-        .attr("height", 300)
+        .attr("width", 1600)
+        .attr("height", 400)
         .attr("class", "cluster")
-        // .call(tip);
-
+    
     svg.selectAll("rect")
-        .data(this.fullData, function(d){
+        .data(this.fullData, function(d,i){
+            // var index = self.fullTextData.indexOf(self.fullTextData[i])
+            // console.log(index)
             return d; 
         })
         .enter()
@@ -54,6 +52,7 @@ Full.prototype.init = function(){
         .attr("width", 10)
         .attr("height", 10)
         .attr("x", function(d,i){
+            
             return (i%100)*13; 
         })
         .attr("y", function(d,i){
@@ -61,23 +60,40 @@ Full.prototype.init = function(){
         })
         .attr("fill", function(d,i){
             return colors(self.fullData[i].Value); 
-        }) 
-        .on('mouseover', function (d, i) {
-        //   tip.show
-          d3.select(this).transition()
-               .attr('stroke', 'black')
-                div.transition()
-                .style("opacity", 1)
-        })
-        .on('mouseout', function (d, i) {
-        //   tip.hide
-          d3.select(this).transition()
-               .attr('stroke', 'none')
-                div.transition()
-                    .style("opacity", 1);
-        })
+        })       
+        .on('mouseover', function (d,i) {
+            console.log(d)
+            var text = self.fullTextData[i];
+            console.log(text)
+            var index = self.fullTextData.indexOf(self.fullTextData[i])
+            console.log(index)
+            // var x = (event.pageX) + "px"
+            // var y = ((event.pageY)-28) + "px"
+            d3.select(this).transition()
+                .attr('stroke', 'black')
+            svg.append("text")
+                .text(function(d, i){
+                    // var text = self.fullTextData[i];
+                    // console.log(text)
+                    // var index = self.fullTextData.indexOf(self.fullTextData[i])
+                    // console.log(index)
+                    return("Text: " + self.fullTextData[i].Text);
+                })
+                .attr("x", 0)
+                .attr("y", 315);
+            svg.append("text")
+                .text(function(d, i){
+                    return("Sentiment value: " + self.fullTextData[i].Value)
+                })
+                .attr("x", 0)
+                .attr("y", 350);
 
-
+        })
+       .on('mouseout', function () {
+          d3.select(this).transition()
+            .attr('stroke', 'none')
+          d3.selectAll("text").remove(); 
+        })
 
 
 }
