@@ -7,7 +7,8 @@ function Polarity(fullTextData, polarityData, subjectivityData){
 
 Polarity.prototype.init = function(){
   var self = this;
-  var colors = d3.scaleOrdinal()
+  const data = [self.fullTextData, self.polarityData]; 
+  var colors = d3.scale.threshold()
                  .domain([0,1])
                  .range([
                  "#3bb6c3",
@@ -41,8 +42,8 @@ Polarity.prototype.init = function(){
         .style("opacity", 0);
 
     const svg = d3.select("#polarity").append("svg")
-        .attr("width", 1500)
-        .attr("height", 300)
+        .attr("width", 1600)
+        .attr("height", 350)
         .attr("class", "cluster");
     svg.selectAll("rect")
         .data(this.fullTextData, function(d){
@@ -61,21 +62,34 @@ Polarity.prototype.init = function(){
         .attr("fill", function(d,i){
             return colors(self.polarityData[i].Value); 
         }) 
-        .on('mouseover', function (d, i) {
-          var x = (event.pageX) + "px"
-          var y = (event.pageY) + "px"
-          console.log(x)
-          console.log(y)
-          d3.select(this).transition()
-               .attr('stroke', 'black')
-                div.transition()
-                .style("opacity", 1)
+        .on('mouseover', function (d,i) {
+            const textDataValues = data[1].map(item => item.Value)
+            console.log(textDataValues)
+            const textData = data[0].map(item => item.Text)
+            var index = (textData.indexOf(i.Text))
+            d3.select(this)
+                .transition()
+                .duration(100)
+                .attr('stroke', 'black')
+            svg.append("text")
+                .text(function(d, i){
+                    return("Text: " + textData[index]);
+                })
+                .attr("x", 0)
+                .attr("y", 315);
+            svg.append("text")
+                .text(function(d, i){
+                    return("Polar value: " + textDataValues[index])
+                })
+                .attr("x", 0)
+                .attr("y", 350);
         })
         .on('mouseout', function (d, i) {
           d3.select(this).transition()
                .attr('stroke', 'none')
                 div.transition()
                     .style("opacity", 1);
+          d3.selectAll("text").remove(); 
         })
 
 

@@ -1,50 +1,35 @@
 html{
     background-color: #eeeeee;
     font-family: 'Lato', sans-serif;
-    font-size: 16px;
+    font-size: 20px;
+    margin-right: 200px;
+    margin-left: 200px;
+
 }
 
 p{
     margin-bottom: 15px;
-    margin-left: 50px;
-    margin-right: 50px;
 }
 
-svg{
+.pull{
+    margin-right: 225px;
+    margin-left: 225px; 
+}
+
+/* svg{
     margin-left: 50px;
     margin-right: 50px;
-}
+} */
 
 h1{
     color: #3d405b;
     text-align: center;
     margin-bottom: 75px;
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: 50px;
 }
 
 h2{
     color: #3d405b;
-    margin-left: 50px;
-    margin-right: 50px;
     margin-top: 50px;
 }
-
-h3{
-    margin-left: 50px;
-    margin-right: 50px;
-}
-
-h4{
-    margin-left: 50px;
-    margin-right: 50px;
-}
-
-h5{
-    margin-left: 50px;
-    margin-right: 50px;
-}
-
 
 

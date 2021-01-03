@@ -7,7 +7,7 @@ function Full(fullTextData, fullData){
 Full.prototype.init = function(){
   var self = this;
   const data = [self.fullTextData, self.fullData]; 
-  var colors = d3.scaleOrdinal()
+  var colors = d3.scale.threshold()
                  .domain([0,1])
                  .range([
                  "#3bb6c3",
@@ -39,7 +39,7 @@ Full.prototype.init = function(){
 
     const svg = d3.select("#full").append("svg")
         .attr("width", 1600)
-        .attr("height", 400)
+        .attr("height", 250)
         .attr("class", "cluster")
     
     svg.selectAll("rect")
@@ -78,7 +78,7 @@ Full.prototype.init = function(){
                 .attr("y", 315);
             svg.append("text")
                 .text(function(d, i){
-                    return("Sentiment value: " + textDataValues[index])
+                    return("Subjectivity value: " + textDataValues[index])
                 })
                 .attr("x", 0)
                 .attr("y", 350);
