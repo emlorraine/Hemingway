@@ -8,35 +8,10 @@ function Polarity(fullTextData, polarityData, subjectivityData){
 Polarity.prototype.init = function(){
   var self = this;
   const data = [self.fullTextData, self.polarityData]; 
-  var colors = d3.scale.threshold()
-                 .domain([0,1])
-                 .range([
-                 "#3bb6c3",
-                 "#38b1bd",
-                 "#36acb8",
-                 "#34a7b3",
-                 "#31a2ae",
-                 "#2f9da9",
-                 "#2d98a4",
-                 "#2a939e",
-                 "#288f99",
-                 "#268a94",
-                 "#24858f",
-                 "#21808a",
-                 "#1f7b85",
-                 "#1d767f",
-                 "#1a717a",
-                 "#186c75",
-                 "#166870",
-                 "#14636b",
-                 "#115e66",
-                 "#0f5960",
-                 "#0d545b",
-                 "#0a4f56",
-                 "#084a51",
-                 "#06454c",
-                 "#044147"])
-
+  var colors = d3.scaleLinear()
+                 .domain([-1,1])
+                 .range(["white", "#006d77"])
+                
     var div = d3.select("body").append("div")
         .attr("class", "tooltip-donut")
         .style("opacity", 0);
@@ -64,7 +39,6 @@ Polarity.prototype.init = function(){
         }) 
         .on('mouseover', function (d,i) {
             const textDataValues = data[1].map(item => item.Value)
-            console.log(textDataValues)
             const textData = data[0].map(item => item.Text)
             var index = (textData.indexOf(i.Text))
             d3.select(this)

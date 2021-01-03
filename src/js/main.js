@@ -1,5 +1,5 @@
 (function(){
-    
+
     var instance = null;
     function init() {
     Promise.all([
@@ -18,6 +18,8 @@
       var polarityGraph = new Polarity(fullTextData, polarityData, subjectivityData); 
       var fullGraph = new Full(fullTextData, fullData); 
       var restaurantGraph = new Restaurant(fullTextData, fullData); 
+      var searchGraph = new Search(fullTextData, fullData); 
+      
     });
     }
     function Main(){

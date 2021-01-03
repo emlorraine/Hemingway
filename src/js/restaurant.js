@@ -8,34 +8,9 @@ Restaurant.prototype.init = function(){
   var self = this;
   const data = [self.fullTextData, self.fullData];
   keys = ["restaurant", "food", "table", "meal", "dinner", "lunch", "breakfast", "cafe", "cafes", "eating", "eat", "kitchen", "dining"]
-  var colors = d3.scale.threshold()
-                 .domain([0,1])
-                 .range([
-                 "#3bb6c3",
-                 "#38b1bd",
-                 "#36acb8",
-                 "#34a7b3",
-                 "#31a2ae",
-                 "#2f9da9",
-                 "#2d98a4",
-                 "#2a939e",
-                 "#288f99",
-                 "#268a94",
-                 "#24858f",
-                 "#21808a",
-                 "#1f7b85",
-                 "#1d767f",
-                 "#1a717a",
-                 "#186c75",
-                 "#166870",
-                 "#14636b",
-                 "#115e66",
-                 "#0f5960",
-                 "#0d545b",
-                 "#0a4f56",
-                 "#084a51",
-                 "#06454c",
-                 "#044147"])
+  var colors = d3.scaleLinear()
+                 .domain([-1,1])
+                 .range(["white", "#006d77"])
 
     var div = d3.select("body").append("div")
         .attr("class", "tooltip-donut")
@@ -43,7 +18,7 @@ Restaurant.prototype.init = function(){
 
     const svg = d3.select("#restaurant").append("svg")
         .attr("width", 1600)
-        .attr("height", 400)
+        .attr("height", 300)
         .attr("class", "cluster");
     svg.selectAll("rect")
         .data(this.fullData, function(d){
