@@ -83,6 +83,9 @@
         <li>eating</li>
         <li>eat</li>
         <li>kitchen</li>
+        <li>hunger</li>
+        <li>hungry</li>
+        <li>full</li>
         <li>dining</li>
     </ul>
     <div id="restaurant"></div>
@@ -95,11 +98,12 @@
 
 
     <h2>Search:</h2>
-    <input type="text" id="search" onkeyup="searchWord()" placeholder="Search for words...">
     <div id="search"></div>
+    <label for="searchLabel">Filter by:</label>
+    <input type="text" id="searchTerm" name="searchBox"> 
+    <button id="searchButton" onclick="update()">Search</button>
 
     <h2>Sources:</h2>
-    <!-- <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script> -->
     <script type="application/javascript" src="js/full.js"></script>
     <script type="application/javascript" src="js/restaurant.js"></script>
     <script type="application/javascript" src="js/sentiment.js"></script>

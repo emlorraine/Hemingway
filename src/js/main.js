@@ -19,9 +19,10 @@
       var fullGraph = new Full(fullTextData, fullData); 
       var restaurantGraph = new Restaurant(fullTextData, fullData); 
       var searchGraph = new Search(fullTextData, fullData); 
-      
+
     });
     }
+  
     function Main(){
         if(instance  !== null){
             throw new Error("Cannot instantiate more than one Class");

@@ -19,8 +19,6 @@ Full.prototype.init = function(){
     
     svg.selectAll("rect")
         .data(data[0], function(d,i){
-            // var index = self.fullTextData.indexOf(self.fullTextData[i])
-            // console.log(index)
             return d; 
         })
         .enter()

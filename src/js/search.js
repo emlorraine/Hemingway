@@ -1,11 +1,20 @@
+textData = []; 
+textDataValues = []
 function Search(fullTextData, fullData){ 
     this.fullTextData = fullTextData; 
     this.fullData = fullData;
-    this.init(); 
+    textData = this.fullTextData.map(item => item.Text)
+    textDataValues = this.fullData.map(item => item.Value)
+    this.init();
+}
+
+getTerms=function(){
+    return document.getElementById("searchTerm").value; 
 }
 
 Search.prototype.init = function(){
   var self = this;
+  var term = document.getElementById("searchTerm");
   const data = [self.fullTextData, self.fullData]; 
   var colors = d3.scaleLinear()
                  .domain([-1,1])
@@ -14,8 +23,7 @@ Search.prototype.init = function(){
 
     const svg = d3.select("#search").append("svg")
         .attr("width", 1600)
-        .attr("height", 350)
-        .attr("class", "cluster")
+        .attr("height", 380)
     
     svg.selectAll("rect")
         .data(data[0], function(d,i){
@@ -62,7 +70,37 @@ Search.prototype.init = function(){
             .attr('stroke', 'none')
           d3.selectAll("text").remove(); 
         })
-
+        .attr("class", "search")
 
 }
+function update(){
+  term = document.getElementById("searchTerm").value;
+  indexStorage = []
+  var colors = d3.scaleLinear()
+                 .domain([-1,1])
+                 .range(["white", "#006d77"]) 
+  if(term != ""){
+      for(var index = 0; index < textData.length; index++){
+          if(textData[index].includes(term)){
+            indexStorage.push(index)
+          }
+      }
+    d3.selectAll("rect")
+    .style("fill", function(d,i){
+        for(var x = 0; x < indexStorage.length; x++){
+            if(i == indexStorage[x]){
+                console.log(indexStorage[x]);
+                console.log(i)
+            }
+        }
+        return "red"; 
+  })
+  }
+  
+  return true; 
+}
+
+
+
+
 

@@ -7,7 +7,7 @@ function Restaurant(fullTextData, fullData){
 Restaurant.prototype.init = function(){
   var self = this;
   const data = [self.fullTextData, self.fullData];
-  keys = ["restaurant", "food", "table", "meal", "dinner", "lunch", "breakfast", "cafe", "cafes", "eating", "eat", "kitchen", "dining"]
+  keys = ["restaurant", "food", "table", "meal", "hunger", "hungry", "full", "dinner", "lunch", "breakfast", "cafe", "cafes", "eating", "eat", "kitchen", "dining"]
   var colors = d3.scaleLinear()
                  .domain([-1,1])
                  .range(["white", "#006d77"])
