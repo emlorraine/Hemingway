@@ -3,10 +3,14 @@
     var instance = null;
     function init() {
     Promise.all([
-        d3.csv("./data/full_polarity.csv"),
+        d3.csv("https://emlorraine.github.io/Hemingway/src/data/full_polarity.csv"),
         d3.csv("./data/full_sentence.csv"),
         d3.csv("./data/full_subjectivity.csv"),
         d3.csv("./data/full.csv")
+        // d3.csv("./data/full_polarity.csv"),
+        // d3.csv("./data/full_sentence.csv"),
+        // d3.csv("./data/full_subjectivity.csv"),
+        // d3.csv("./data/full.csv")
     ]).then(function (files) {
       for (var i = 0; i < files.length; ++i) {
         var polarityData = files[0];
